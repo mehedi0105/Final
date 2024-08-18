@@ -159,3 +159,8 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mehedistudies@gmail.com'
 EMAIL_HOST_PASSWORD =  'ihqxyvnczjyugnmw'
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://final-s1v0.onrender.com'
+]
