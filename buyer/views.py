@@ -58,7 +58,7 @@ def accept_work(request ,id):
     if requirment is not None:
         requirment.is_accepted = True
         requirment.save()
-        return redirect("http://127.0.0.1:5500/Frontend/buyerDashbord.html")
+        return redirect("https://final-s1v0.onrender.com/Frontend/buyerDashbord.html")
     else:
         return HttpResponse("Activation link is invalid!", status=status.HTTP_400_BAD_REQUEST)
         

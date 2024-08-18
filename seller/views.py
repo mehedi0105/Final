@@ -60,6 +60,6 @@ def user_requirment(request ,id):
     if requirment is not None:
         requirment.submit_reqirment = True
         requirment.save()
-        return redirect("http://127.0.0.1:5500/Frontend/sellerDashboard.html")
+        return redirect("https://final-s1v0.onrender.com/Frontend/sellerDashboard.html")
     else:
         return HttpResponse("Activation link is invalid!", status=status.HTTP_400_BAD_REQUEST)
