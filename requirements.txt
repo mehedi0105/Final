@@ -1,0 +1,13 @@
+asgiref
+dj-rest-auth
+Django
+django-cors-headers
+django-filter
+djangorestframework
+environ
+ldap3
+Markdown
+pyasn1
+pydirectory
+sqlparse
+tzdata
