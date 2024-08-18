@@ -50,7 +50,7 @@ def activate(request ,uid64, token):
     if user is not None and default_token_generator.check_token(user, token):
         user.is_active = True
         user.save()
-        return redirect("https://final-s1v0.onrender.com/Frontend/login.html")
+        return redirect("https://mehedi0105.github.io/Final-Front/login.html")
     else:
         return HttpResponse("Activation link is invalid!", status=status.HTTP_400_BAD_REQUEST)
 
