@@ -59,6 +59,24 @@ class Proposal_Veiw_set(viewsets.ModelViewSet):
     queryset = Proposal.objects.all()
     serializer_class = seller.ProposalSerializers
 
+class ProposalDelete(APIView):
+    def get_objects(self, pk):
+        try:
+            return Proposal.objects.get(pk = pk)
+        except Proposal.DoesNotExist:
+            raise Http404
+    
+    def get(self, request, pk, format = None):
+        job = self.get_objects(pk=pk)
+        serializer = seller.ProposalSerializers(job)
+        return Response(serializer.data)
+    
+    def delete(self, request, pk, format = None):
+        job = self.get_objects(pk=pk)
+        job.delete()
+        return Response({'message': 'Proposal deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+        
+
 class Requirmnet_Veiw_set(viewsets.ModelViewSet):
     queryset = ProjectRequrment.objects.all()
     serializer_class = seller.RequirmentSerializers

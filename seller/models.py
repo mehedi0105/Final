@@ -7,7 +7,9 @@ class Proposal(models.Model):
     seller = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
     cover_letter = models.TextField()
     submit_reqirment = models.BooleanField(default=False)
+    submit_project = models.BooleanField(default=False)
     is_accepted = models.BooleanField(default=False)
+    reveiw = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__ (self):

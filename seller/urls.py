@@ -10,6 +10,7 @@ urlpatterns = [
     path('category_slug/<str:category_slug>/', views.categorySlugApiView.as_view(), name="category-slug"),
     path('jobDetails/<int:pk>/', views.JOB_DETAILS_API_VIEW.as_view(), name="jobDetails"),
     path('user_requirment1/<int:id>/', views.user_requirment, name="user_requirment1"),
+    path('ProposalDelete/<int:pk>/', views.ProposalDelete.as_view(), name="ProposalDelete"),
     path('', include(router.urls)),
 ]
 
