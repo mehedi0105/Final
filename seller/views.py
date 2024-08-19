@@ -49,6 +49,11 @@ class JOB_DETAILS_API_VIEW(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+    def delete(self, request, pk, format = None):
+        job = self.get_objects(pk=pk)
+        job.delete()
+        return Response({'message': 'JobPost deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+    
 
 class Proposal_Veiw_set(viewsets.ModelViewSet):
     queryset = Proposal.objects.all()
