@@ -25,6 +25,7 @@ class RevewViewSet(APIView):
 
 
 class PostJobApiView(APIView):
+
     def get(self, request, format=None):
         jobs = models.PostJob.objects.all()
         serializer =serializers.JobPostSerializer(jobs, many= True)
@@ -37,8 +38,10 @@ class PostJobApiView(APIView):
             return Response(serializer.data, status= status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+    
+    
+    
     # propal kaj baki Ace
-
 
 class GetCategoryNameApiView(APIView):
     def get(self, request, cat_id):

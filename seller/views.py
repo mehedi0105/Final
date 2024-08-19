@@ -41,6 +41,14 @@ class JOB_DETAILS_API_VIEW(APIView):
         serializer = serializers.JobPostSerializer(job)
         return Response(serializer.data)
     
+    def put(self, request, pk, format = None):
+        job = self.get_objects(pk=pk)
+        serializer = serializers.JobPostSerializer(job, data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
 
 class Proposal_Veiw_set(viewsets.ModelViewSet):
     queryset = Proposal.objects.all()
