@@ -71,6 +71,14 @@ class ProposalDelete(APIView):
         serializer = seller.ProposalSerializers(job)
         return Response(serializer.data)
     
+    def put(self, request, pk, format = None):
+        job = self.get_objects(pk=pk)
+        serializer = serializers.JobPostSerializer(job, data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
     def delete(self, request, pk, format = None):
         job = self.get_objects(pk=pk)
         job.delete()
@@ -91,6 +99,32 @@ def user_requirment(request ,id):
     if requirment is not None:
         requirment.submit_reqirment = True
         requirment.save()
-        return redirect("https://final-s1v0.onrender.com/Frontend/sellerDashboard.html")
+        return redirect("http://127.0.0.1:5500/Frontend/buyerDashbord.html")
+    else:
+        return HttpResponse("Activation link is invalid!", status=status.HTTP_400_BAD_REQUEST)
+    
+def is_accepted(request ,id):
+    try:
+        requirment = Proposal._default_manager.get(pk=id)
+    except(Proposal.DoesNotExist):
+        requirment = None
+    
+    if requirment is not None:
+        requirment.is_accepted = True
+        requirment.save()
+        return redirect("http://127.0.0.1:5500/Frontend/buyerDashbord.html")
+    else:
+        return HttpResponse("Activation link is invalid!", status=status.HTTP_400_BAD_REQUEST)
+    
+def submit_project(request ,id):
+    try:
+        requirment = Proposal._default_manager.get(pk=id)
+    except(Proposal.DoesNotExist):
+        requirment = None
+    
+    if requirment is not None:
+        requirment.submit_project = True
+        requirment.save()
+        return redirect("http://127.0.0.1:5500/Frontend/buyerDashbord.html")
     else:
         return HttpResponse("Activation link is invalid!", status=status.HTTP_400_BAD_REQUEST)
