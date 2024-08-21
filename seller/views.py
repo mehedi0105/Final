@@ -6,7 +6,7 @@ from buyer import serializers
 from rest_framework.response import Response
 from django.http import HttpResponse
 from . import serializers as seller
-from .models import Proposal,ProjectRequrment
+from .models import Proposal,ProjectRequrment, SubmitedProject
 from rest_framework import viewsets
 from django.contrib.auth import get_user_model
 from rest_framework import status
@@ -88,6 +88,10 @@ class ProposalDelete(APIView):
 class Requirmnet_Veiw_set(viewsets.ModelViewSet):
     queryset = ProjectRequrment.objects.all()
     serializer_class = seller.RequirmentSerializers
+
+class Project_Veiw_set(viewsets.ModelViewSet):
+    queryset = SubmitedProject.objects.all()
+    serializer_class = seller.SubmitedProjectSerializers
 
 
 def user_requirment(request ,id):

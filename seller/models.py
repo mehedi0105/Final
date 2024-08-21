@@ -20,3 +20,10 @@ class ProjectRequrment(models.Model):
     buyer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
     requirment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+class SubmitedProject(models.Model):
+    job = models.ForeignKey(PostJob, on_delete=models.CASCADE)
+    seller = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
+    project = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
